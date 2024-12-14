@@ -40,3 +40,23 @@ const bread = new PerishableProductProperties('Bread', 2.00, 20, '2024-12-15');
 // Print details of the products using the overridden toString method
 console.log(milk.toString());  // Product: Milk, Price: $1.50, Quantity: 10, Expiration Date: 2024-12-31
 console.log(bread.toString()); // Product: Bread, Price: $2.00, Quantity: 20, Expiration Date: 2024-12-15
+
+// Create instances of products
+const apple = new ProductProperties('Apple', 2.00, 50);
+const banana = new ProductProperties('Banana', 1.50, 100);
+const milk = new PerishableProductProperties('Milk', 1.50, 10, '2024-12-31');
+const bread = new PerishableProductProperties('Bread', 2.00, 20, '2024-12-15');
+
+// Store all products in an array
+const products = [apple, banana, milk, bread];
+
+// Print original prices before discount
+console.log('Original Prices:');
+products.forEach(product => console.log(product.toString()));
+
+// Apply a 10% discount (0.1)
+ProductProperties.applyDiscount(products, 0.1);
+
+// Print updated prices after discount
+console.log('\nAfter Applying 10% Discount:');
+products.forEach(product => console.log(product.toString()));
