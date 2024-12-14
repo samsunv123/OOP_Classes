@@ -52,11 +52,13 @@ addProduct(product) {
     });
     return totalValue;
   }
-  
+
   findProductByName(name) {
     return this.inventory.find(product => product.name.toLowerCase() === name.toLowerCase()) || null;
   }
 }
+// Create a Store object
+const store = new Store();
 // Create instances of perishable products with sample data
 const milk = new PerishableProductProperties('Milk', 1.50, 10, '2024-12-31');
 const bread = new PerishableProductProperties('Bread', 2.00, 20, '2024-12-15');
@@ -82,3 +84,32 @@ ProductProperties.applyDiscount(products, 0.1);
 // Print updated prices after discount
 console.log('\nAfter Applying 10% Discount:');
 products.forEach(product => console.log(product.toString()));
+
+// Create 5 products (including at least 2 PerishableProduct objects)
+const cheese = new PerishableProductProperties("Cheese", 3.0, 30, "2024-11-30"); // Perishable product
+const orange = new ProductProperties("Orange", 2.0, 120); // Regular product
+
+// Add products to store inventory
+store.addProduct(apple);
+store.addProduct(milk);
+store.addProduct(banana);
+store.addProduct(cheese);
+store.addProduct(orange);
+
+// Print total inventory value before discount
+console.log("Total Inventory Value Before Discount: $" + store.getInventoryValue().toFixed(2));
+
+// Apply a 15% discount using the static method
+ProductProperties.applyDiscount(store.inventory, 0.15);
+
+// Print total inventory value after discount
+console.log("Total Inventory Value After Discount: $" + store.getInventoryValue().toFixed(2));
+
+// Find and print details of a specific product by name
+const productName = "Milk";
+const foundProduct = store.findProductByName(productName);
+if (foundProduct) {
+  console.log(`Found Product: ${foundProduct.toString()}`);
+} else {
+  console.log(`${productName} not found.`);
+}
