@@ -53,6 +53,10 @@ addProduct(product) {
     return totalValue;
   }
   
+  findProductByName(name) {
+    return this.inventory.find(product => product.name.toLowerCase() === name.toLowerCase()) || null;
+  }
+}
 // Create instances of perishable products with sample data
 const milk = new PerishableProductProperties('Milk', 1.50, 10, '2024-12-31');
 const bread = new PerishableProductProperties('Bread', 2.00, 20, '2024-12-15');
