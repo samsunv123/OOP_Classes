@@ -1,32 +1,25 @@
-// Base Class: ProductProperties
+// Base class for product properties
 class ProductProperties {
     constructor(name, price, quantity) {
-      this.name = name; // The name of the product (string)
-      this.price = price; // The price of the product (number)
-      this.quantity = quantity; // The quantity available in stock (number)
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
     }
-  
-    // Method to calculate the total value of the product in stock
-    getTotalValue() {
-      return this.price * this.quantity; // Total value = price * quantity
-    }
-  
-    // Method to return a string representation of the product
-    toString() {
-      return `Product: ${this.name}, Price: $${this.price.toFixed(2)}, Quantity: ${this.quantity}`;
-    }
-  }
-  
-// Example usage:
-const apple = new ProductProperties('Apple', 2.50, 50);
-console.log(apple.toString()); // Output: "Product: Apple, Price: $2.50, Quantity: 50"
-console.log('Total Value:', apple.getTotalValue()); 
 
+    getTotalValue() {
+        return this.price * this.quantity;
+    }
+
+    toString() {
+        return `Product: ${this.name}, Price: $${this.price.toFixed(2)}, Quantity: ${this.quantity}`;
+    }
+}
+
+// Subclass for perishable product properties
 class PerishableProductProperties extends ProductProperties {
     constructor(name, price, quantity, expirationDate) {
-        // Call the parent class constructor
-        super(name, price, quantity);
-        this.expirationDate = expirationDate;
+        super(name, price, quantity);  // Call the parent class constructor
+        this.expirationDate = expirationDate;  // Initialize the expiration date
     }
 
     // Override the toString method to include expiration date
@@ -34,3 +27,10 @@ class PerishableProductProperties extends ProductProperties {
         return `${super.toString()}, Expiration Date: ${this.expirationDate}`;
     }
 }
+// Create instances of perishable products with sample data
+const milk = new PerishableProductProperties('Milk', 1.50, 10, '2024-12-31');
+const bread = new PerishableProductProperties('Bread', 2.00, 20, '2024-12-15');
+
+// Print details of the products using the overridden toString method
+console.log(milk.toString());  // Product: Milk, Price: $1.50, Quantity: 10, Expiration Date: 2024-12-31
+console.log(bread.toString()); // Product: Bread, Price: $2.00, Quantity: 20, Expiration Date: 2024-12-15
