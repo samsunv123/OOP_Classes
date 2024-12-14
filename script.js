@@ -21,3 +21,16 @@ class ProductProperties {
 const apple = new ProductProperties('Apple', 2.50, 50);
 console.log(apple.toString()); // Output: "Product: Apple, Price: $2.50, Quantity: 50"
 console.log('Total Value:', apple.getTotalValue()); 
+
+class PerishableProductProperties extends ProductProperties {
+    constructor(name, price, quantity, expirationDate) {
+        // Call the parent class constructor
+        super(name, price, quantity);
+        this.expirationDate = expirationDate;
+    }
+
+    // Override the toString method to include expiration date
+    toString() {
+        return `${super.toString()}, Expiration Date: ${this.expirationDate}`;
+    }
+}
