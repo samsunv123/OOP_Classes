@@ -33,6 +33,13 @@ class PerishableProductProperties extends ProductProperties {
         return `${super.toString()}, Expiration Date: ${this.expirationDate}`;
     }
 }
+
+class Store {
+    constructor() {
+      this.inventory = []; // Array to hold products
+    }
+
+
 // Create instances of perishable products with sample data
 const milk = new PerishableProductProperties('Milk', 1.50, 10, '2024-12-31');
 const bread = new PerishableProductProperties('Bread', 2.00, 20, '2024-12-15');
@@ -44,8 +51,6 @@ console.log(bread.toString()); // Product: Bread, Price: $2.00, Quantity: 20, Ex
 // Create instances of products
 const apple = new ProductProperties('Apple', 2.00, 50);
 const banana = new ProductProperties('Banana', 1.50, 100);
-const milk = new PerishableProductProperties('Milk', 1.50, 10, '2024-12-31');
-const bread = new PerishableProductProperties('Bread', 2.00, 20, '2024-12-15');
 
 // Store all products in an array
 const products = [apple, banana, milk, bread];
