@@ -39,7 +39,20 @@ class Store {
       this.inventory = []; // Array to hold products
     }
 
+// Method to add a product to the inventory
+addProduct(product) {
+    this.inventory.push(product);
+  }
 
+  // Method to calculate the total value of the inventory
+  getInventoryValue() {
+    let totalValue = 0;
+    this.inventory.forEach(product => {
+      totalValue += product.getTotalValue();
+    });
+    return totalValue;
+  }
+  
 // Create instances of perishable products with sample data
 const milk = new PerishableProductProperties('Milk', 1.50, 10, '2024-12-31');
 const bread = new PerishableProductProperties('Bread', 2.00, 20, '2024-12-15');
